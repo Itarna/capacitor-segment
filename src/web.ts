@@ -55,8 +55,9 @@ export class SegmentAnalyticsWeb
   async screen(args: ScreenArguments): Promise<void> {
     if (!window.analytics) return Promise.reject('Segment is not initialized');
 
-    const { screenName, properties, options } = args;
+    const { screenName, category, properties, options } = args;
     if (!screenName) return Promise.reject('Screen name was not supplied');
+    if (!category) return Promise.reject('Screen name was not supplied');
 
     window.analytics.screen(screenName, properties, options);
   }

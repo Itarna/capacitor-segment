@@ -59,14 +59,15 @@ export interface TrackArguments {
 }
 
 export interface ScreenArguments {
-  screenName: string;
+  screenName?: string;
+  category?: string;
   properties?: Record<string, unknown>;
   options?: Record<string, unknown>;
 }
 
 export interface PageArguments {
-  category: string;
-  pageName: string;
+  pageName?: string;
+  category?: string;
   properties?: Record<string, unknown>;
   options?: Record<string, unknown>;
 }

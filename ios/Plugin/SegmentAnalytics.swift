@@ -17,8 +17,8 @@ import Segment
         return
     }
 
-    @objc public func track(event: String, properties: [String: Any], options: [String: Any]) {
-        Analytics.shared().track(event, properties: properties, options: options)
+    @objc public func track(eventName: String, properties: [String: Any], options: [String: Any]) {
+        Analytics.shared().track(eventName, properties: properties, options: options)
         return
     }
 
@@ -28,7 +28,7 @@ import Segment
     }
 
     @objc public func group(userId: String, groupId: String, traits: [String: Any], options: [String: Any]) {
-        Analytics.shared().group(userId, groupId, traits: traits, options: options)
+        Analytics.shared().group(groupId, traits: traits, options: options)
         return
     }
 

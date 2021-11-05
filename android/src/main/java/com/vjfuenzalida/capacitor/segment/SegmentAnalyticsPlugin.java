@@ -10,12 +10,16 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "SegmentAnalytics")
 public class SegmentAnalyticsPlugin extends Plugin {
 
-    private boolean initialized = false;
-    private SegmentAnalytics implementation = new SegmentAnalytics();
+    private SegmentAnalytics implementation;
+
+    @Override
+    public void load() {
+        implementation = new SegmentAnalytics(getContext(), getBridge());
+    }
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void initialize(PluginCall call) {
-        if (initialized == true) {
+        if (implementation.initialized) {
             call.reject("Segment is already initialized");
             return;
         }
@@ -28,13 +32,12 @@ public class SegmentAnalyticsPlugin extends Plugin {
         Boolean recordScreenViews = call.getBoolean("recordScreenViews", false);
 
         implementation.initialize(writeKey, trackLifecycleEvents, recordScreenViews);
-        initialized = true;
         call.resolve();
     }
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void identify(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }
@@ -52,7 +55,7 @@ public class SegmentAnalyticsPlugin extends Plugin {
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void track(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }
@@ -70,43 +73,45 @@ public class SegmentAnalyticsPlugin extends Plugin {
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void screen(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }
         String screenName = call.getString("screenName");
-        if (screenName == null) {
-            call.reject("Screen name was not supplied");
+        String category = call.getString("category");
+        if (screenName == null && category == null) {
+            call.reject("Category or Screen name must be supplied");
             return;
         }
         JSObject properties = call.getObject("properties");
         JSObject options = call.getObject("options");
 
-        implementation.screen(screenName, properties, options);
+        implementation.screen(category, screenName, properties, options);
         call.resolve();
     }
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void page(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }
         String pageName = call.getString("pageName");
-        if (pageName == null) {
-            call.reject("Page name was not supplied");
+        String category = call.getString("category");
+        if (pageName == null && category == null) {
+            call.reject("Category or Page name must be supplied");
             return;
         }
         JSObject properties = call.getObject("properties");
         JSObject options = call.getObject("options");
 
-        implementation.screen(pageName, properties, options);
+        implementation.screen(category, pageName, properties, options);
         call.resolve();
     }
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void group(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }
@@ -125,7 +130,7 @@ public class SegmentAnalyticsPlugin extends Plugin {
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void alias(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }
@@ -136,13 +141,13 @@ public class SegmentAnalyticsPlugin extends Plugin {
         }
         JSObject options = call.getObject("options");
 
-        implementation.group(newId, options);
+        implementation.alias(newId, options);
         call.resolve();
     }
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void reset(PluginCall call) {
-        if (!initialized) {
+        if (!implementation.initialized) {
             call.reject("Segment is not initialized");
             return;
         }

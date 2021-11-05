@@ -2,6 +2,8 @@ package com.vjfuenzalida.capacitor.segment;
 
 import android.content.Context;
 import android.util.Log;
+import com.getcapacitor.Bridge;
+import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
@@ -19,12 +21,21 @@ import org.json.JSONException;
 
 public class SegmentAnalytics {
 
-    private static final String PLUGIN_TAG = "SegmentAnalytics";
+    private static final String TAG = "SegmentAnalytics";
+
     public Analytics analytics;
+    private final Context context;
+    private Bridge bridge;
+
+    public boolean initialized = false;
+
+    SegmentAnalytics(Context context, Bridge bridge) {
+        this.context = context;
+        this.bridge = bridge;
+    }
 
     public void initialize(String writeKey, Boolean trackLifecycleEvents, Boolean recordScreenViews) {
-        Context context = this.getContext();
-        Builder builder = new Analytics.Builder(context, writeKey);
+        Builder builder = new Analytics.Builder(this.context, writeKey);
         if (trackLifecycleEvents) {
             builder.trackApplicationLifecycleEvents();
         }
@@ -32,6 +43,7 @@ public class SegmentAnalytics {
             builder.recordScreenViews();
         }
         this.analytics = builder.build();
+        this.initialized = true;
     }
 
     public void identify(String userId, JSObject traits, JSObject options) {
@@ -39,15 +51,17 @@ public class SegmentAnalytics {
     }
 
     public void track(String eventName, JSObject properties, JSObject options) {
-        this.analytics.track(eventName, makePropertiesFromMap(makeMapFromJSON(properties)), makeOptionsFromJSON(options));
+        this.analytics.track(eventName, makePropertiesFromMap(makeMapFromJSON(properties)),
+                makeOptionsFromJSON(options));
     }
 
-    public void screen(String screenName, JSObject properties, JSObject options) {
-        this.analytics.screen(screenName, makePropertiesFromMap(makeMapFromJSON(properties)), makeOptionsFromJSON(options));
+    public void screen(String category, String screenName, JSObject properties, JSObject options) {
+        this.analytics.screen(category, screenName, makePropertiesFromMap(makeMapFromJSON(properties)),
+                makeOptionsFromJSON(options));
     }
 
     public void group(String userId, String groupId, JSObject traits, JSObject options) {
-        this.analytics.group(userId, groupId, makeTraitsFromMap(makeMapFromJSON(traits)), makeOptionsFromJSON(options));
+        this.analytics.group(groupId, makeTraitsFromMap(makeMapFromJSON(traits)), makeOptionsFromJSON(options));
     }
 
     public void alias(String newId, JSObject options) {
@@ -67,7 +81,7 @@ public class SegmentAnalytics {
                 Object value = obj.get(key);
                 map.put(key, value);
             } catch (JSONException e) {
-                Log.d(PLUGIN_TAG, "could not get value for key " + key);
+                Log.d(TAG, "could not get value for key " + key);
             }
         }
         return map;
@@ -94,7 +108,7 @@ public class SegmentAnalytics {
                 boolean enabled = obj.getBool(key);
                 options.setIntegration(key, enabled);
             } catch (Exception e) {
-                Log.d(PLUGIN_TAG, "could not get boolean for key " + key);
+                Log.d(TAG, "could not get boolean for key " + key);
             }
         }
         return options;

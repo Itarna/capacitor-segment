@@ -195,6 +195,7 @@ clears the SDK’s internal stores for the current user and group.
 | Prop             | Type                |
 | ---------------- | ------------------- |
 | **`screenName`** | <code>string</code> |
+| **`category`**   | <code>string</code> |
 | **`properties`** | <code>any</code>    |
 | **`options`**    | <code>any</code>    |
 
@@ -203,8 +204,8 @@ clears the SDK’s internal stores for the current user and group.
 
 | Prop             | Type                |
 | ---------------- | ------------------- |
-| **`category`**   | <code>string</code> |
 | **`pageName`**   | <code>string</code> |
+| **`category`**   | <code>string</code> |
 | **`properties`** | <code>any</code>    |
 | **`options`**    | <code>any</code>    |
 

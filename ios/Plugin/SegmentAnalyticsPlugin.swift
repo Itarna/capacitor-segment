@@ -79,7 +79,6 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is not initialized")
             return
         }
-
         guard let pageName = call.getString("pageName") else {
             call.reject("Page name was not supplied")
             return
@@ -87,7 +86,7 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
 
         let properties: Dictionary = call.getObject("properties") ?? [:]
         let options: Dictionary = call.getObject("options") ?? [:]
-        implementation.screen(pageName: pageName, properties: properties, options: options)
+        implementation.screen(screenName: pageName, properties: properties, options: options)
         call.resolve()
     }
 
@@ -124,7 +123,7 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
         }
 
         let options: Dictionary = call.getObject("options") ?? [:]
-        implementation.screen(newId: newId, options: options)
+        implementation.alias(newId: newId, options: options)
         call.resolve()
     }
 
