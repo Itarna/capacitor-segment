@@ -1,11 +1,11 @@
-# capacitor-segment
+# Capacitor Segment Plugin
 
 The plugin enables segment analytics tracking for ionic apps
 
 ## Install
 
 ```bash
-npm install capacitor-segment
+npm install @payflow-chile/capacitor-segment
 npx cap sync
 ```
 

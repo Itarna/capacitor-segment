@@ -14,7 +14,7 @@
     "@capacitor/core": "latest",
     "@capacitor/camera": "latest",
     "@capacitor/splash-screen": "latest",
-    "capacitor-segment": "file:.."
+    "@payflow-chile/capacitor-segment": "file:.."
   },
   "devDependencies": {
     "@capacitor/cli": "latest"

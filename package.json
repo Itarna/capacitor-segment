@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-segment",
+  "name": "@payflow-chile/capacitor-segment",
   "version": "1.0.0",
   "description": "Capacitor plugin that enables segment analytics tracking for ionic apps",
   "main": "dist/plugin.cjs.js",
