@@ -74,5 +74,9 @@
     "android": {
       "src": "android"
     }
+  },
+  "dependencies": {
+    "@analytics/segment": "^1.1.2",
+    "analytics": "^0.7.18"
   }
 }
