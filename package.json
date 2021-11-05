@@ -1,7 +1,7 @@
 {
   "name": "capacitor-segment",
-  "version": "0.0.1",
-  "description": "The plugin enables segment analytics tracking for ionic apps",
+  "version": "1.0.0",
+  "description": "Capacitor plugin that enables segment analytics tracking for ionic apps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vjfuenzalida/capacitor-segment-analytics.git"
+    "url": "git+https://bitbucket.org/payflow-chile/capacitor-segment.git"
   },
   "bugs": {
-    "url": "https://github.com/vjfuenzalida/capacitor-segment-analytics/issues"
+    "url": "https://bitbucket.org/payflow-chile/capacitor-segment/issues"
   },
   "keywords": [
     "capacitor",

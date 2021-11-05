@@ -1,4 +1,4 @@
-package com.vjfuenzalida.capacitor.segment;
+package cl.payflowchile.capacitor.segment;
 
 import android.content.Context;
 import android.util.Log;
@@ -51,13 +51,11 @@ public class SegmentAnalytics {
     }
 
     public void track(String eventName, JSObject properties, JSObject options) {
-        this.analytics.track(eventName, makePropertiesFromMap(makeMapFromJSON(properties)),
-                makeOptionsFromJSON(options));
+        this.analytics.track(eventName, makePropertiesFromMap(makeMapFromJSON(properties)), makeOptionsFromJSON(options));
     }
 
     public void screen(String category, String screenName, JSObject properties, JSObject options) {
-        this.analytics.screen(category, screenName, makePropertiesFromMap(makeMapFromJSON(properties)),
-                makeOptionsFromJSON(options));
+        this.analytics.screen(category, screenName, makePropertiesFromMap(makeMapFromJSON(properties)), makeOptionsFromJSON(options));
     }
 
     public void group(String userId, String groupId, JSObject traits, JSObject options) {

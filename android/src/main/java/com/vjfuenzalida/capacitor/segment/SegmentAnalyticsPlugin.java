@@ -1,4 +1,4 @@
-package com.vjfuenzalida.capacitor.segment;
+package cl.payflowchile.capacitor.segment;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
