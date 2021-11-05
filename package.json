@@ -1,5 +1,5 @@
 {
-  "name": "@payflow-chile/capacitor-segment",
+  "name": "capacitor-segment-plugin",
   "version": "1.0.0",
   "description": "Capacitor plugin that enables segment analytics tracking for ionic apps",
   "main": "dist/plugin.cjs.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorSegment.podspec"
+    "CapacitorSegmentPlugin.podspec"
   ],
   "author": "Vicente Fuenzalida",
   "license": "MIT",
