@@ -1,14 +1,9 @@
 package cl.payflowchile.capacitor.segmentanalytics;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-import com.getcapacitor.Bridge;
-import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.JSObject;
-import com.getcapacitor.NativePlugin;
-import com.getcapacitor.Plugin;
-import com.getcapacitor.PluginCall;
-import com.getcapacitor.PluginMethod;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Analytics.Builder;
 import com.segment.analytics.Options;
@@ -25,13 +20,13 @@ public class SegmentAnalytics {
 
     public Analytics analytics;
     private final Context context;
-    private Bridge bridge;
+    private final Activity activity;
 
     public boolean initialized = false;
 
-    SegmentAnalytics(Context context, Bridge bridge) {
+    SegmentAnalytics(Context context, Activity activity) {
         this.context = context;
-        this.bridge = bridge;
+        this.activity = activity;
     }
 
     public void initialize(String writeKey, Boolean trackLifecycleEvents, Boolean recordScreenViews) {
@@ -42,8 +37,10 @@ public class SegmentAnalytics {
         if (recordScreenViews) {
             builder.recordScreenViews();
         }
-        this.analytics = builder.build();
-        this.initialized = true;
+        this.activity.runOnUiThread(() -> {
+            initialized = true;
+            analytics = builder.build();
+        });
     }
 
     public void identify(String userId, JSObject traits, JSObject options) {
@@ -72,7 +69,7 @@ public class SegmentAnalytics {
 
     private Map<String, Object> makeMapFromJSON(JSObject obj) {
         Iterator<String> keys = obj.keys();
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         while (keys.hasNext()) {
             String key = keys.next();
             try {

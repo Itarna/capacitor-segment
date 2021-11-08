@@ -5,7 +5,6 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
-import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "SegmentAnalytics")
 public class SegmentAnalyticsPlugin extends Plugin {
@@ -14,7 +13,7 @@ public class SegmentAnalyticsPlugin extends Plugin {
 
     @Override
     public void load() {
-        implementation = new SegmentAnalytics(getContext(), getBridge());
+        implementation = new SegmentAnalytics(getContext(), getActivity());
     }
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
