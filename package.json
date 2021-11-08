@@ -1,6 +1,6 @@
 {
   "name": "capacitor-segment-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Capacitor plugin that enables segment analytics tracking for ionic apps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorSegment.podspec"
+    "CapacitorSegmentPlugin.podspec"
   ],
   "author": "Vicente Fuenzalida",
   "license": "MIT",
