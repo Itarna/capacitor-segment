@@ -39,8 +39,8 @@ public class SegmentAnalytics {
         }
         this.activity.runOnUiThread(
                 () -> {
-                    initialized = true;
                     analytics = builder.build();
+                    initialized = true;
                 }
             );
     }
