@@ -79,8 +79,8 @@ public class SegmentAnalyticsPlugin extends Plugin {
         }
         String screenName = call.getString("screenName");
         String category = call.getString("category");
-        if (screenName == null && category == null) {
-            call.reject("Category or Screen name must be supplied");
+        if (screenName == null) {
+            call.reject("Screen name must be supplied");
             return;
         }
         JSObject properties = call.getObject("properties");
@@ -98,8 +98,8 @@ public class SegmentAnalyticsPlugin extends Plugin {
         }
         String pageName = call.getString("pageName");
         String category = call.getString("category");
-        if (pageName == null && category == null) {
-            call.reject("Category or Page name must be supplied");
+        if (pageName == null) {
+            call.reject("Page name must be supplied");
             return;
         }
         JSObject properties = call.getObject("properties");

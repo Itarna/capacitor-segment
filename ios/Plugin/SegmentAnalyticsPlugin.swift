@@ -15,7 +15,7 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is already initialized")
             return
         }
-        guard let writeKey = call.getString("writeKey") else {
+        guard let writeKey: String = call.getString("writeKey") else {
             call.reject("Write key is required to initialize plugin")
             return
         }
@@ -31,7 +31,7 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is not initialized")
             return
         }
-        guard let userId = call.getString("userId") else {
+        guard let userId: String = call.getString("userId") else {
             call.reject("User ID is required for 'identify' but not supplied")
             return
         }
@@ -47,7 +47,7 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is not initialized")
             return
         }
-        guard let eventName = call.getString("eventName") else {
+        guard let eventName: String = call.getString("eventName") else {
             call.reject("Event name is not supplied")
             return
         }
@@ -63,14 +63,17 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is not initialized")
             return
         }
-        guard let screenName = call.getString("screenName") else {
-            call.reject("Screen name was not supplied")
+
+        guard let screenName: String = call.getString("screenName") else {
+            call.reject("Screen name is not supplied")
             return
         }
 
+        let category: String? = call.getString("category") ?? nil
         let properties: Dictionary = call.getObject("properties") ?? [:]
         let options: Dictionary = call.getObject("options") ?? [:]
-        implementation.screen(screenName: screenName, properties: properties, options: options)
+
+        implementation.screen(screenName: screenName, category: category, properties: properties, options: options)
         call.resolve()
     }
 
@@ -79,14 +82,17 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is not initialized")
             return
         }
-        guard let pageName = call.getString("pageName") else {
-            call.reject("Page name was not supplied")
+
+        guard let pageName: String = call.getString("pageName") else {
+            call.reject("Page name is not supplied")
             return
         }
 
+        let category: String? = call.getString("category") ?? nil
         let properties: Dictionary = call.getObject("properties") ?? [:]
         let options: Dictionary = call.getObject("options") ?? [:]
-        implementation.screen(screenName: pageName, properties: properties, options: options)
+
+        implementation.screen(screenName: pageName, category: category, properties: properties, options: options)
         call.resolve()
     }
 
@@ -96,12 +102,12 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             return
         }
 
-        guard let userId = call.getString("userId") else {
+        guard let userId: String = call.getString("userId") else {
             call.reject("User ID was not supplied")
             return
         }
 
-        guard let groupId = call.getString("groupId") else {
+        guard let groupId: String = call.getString("groupId") else {
             call.reject("Group ID was not supplied")
             return
         }
@@ -117,7 +123,7 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Segment is not initialized")
             return
         }
-        guard let newId = call.getString("newId") else {
+        guard let newId: String = call.getString("newId") else {
             call.reject("New ID was not supplied")
             return
         }

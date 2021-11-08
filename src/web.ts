@@ -56,18 +56,16 @@ export class SegmentAnalyticsWeb
     if (!window.analytics) return Promise.reject('Segment is not initialized');
 
     const { screenName, category, properties, options } = args;
-    if (!screenName) return Promise.reject('Screen name was not supplied');
-    if (!category) return Promise.reject('Screen name was not supplied');
+    if (!screenName) return Promise.reject('Screen name must be supplied');
 
-    window.analytics.screen(screenName, properties, options);
+    window.analytics.page(category, screenName, properties, options);
   }
 
   async page(args: PageArguments): Promise<void> {
     if (!window.analytics) return Promise.reject('Segment is not initialized');
 
     const { pageName, category, properties, options } = args;
-    if (!category) return Promise.reject('Category was not supplied');
-    if (!pageName) return Promise.reject('Page name was not supplied');
+    if (!pageName) return Promise.reject('Page name must be supplied');
 
     window.analytics.page(category, pageName, properties, options);
   }

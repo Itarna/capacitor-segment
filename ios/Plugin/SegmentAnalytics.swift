@@ -22,8 +22,8 @@ import Segment
         return
     }
 
-    @objc public func screen(screenName: String, properties: [String: Any], options: [String: Any]) {
-        Analytics.shared().screen(screenName, properties: properties, options: options)
+    @objc public func screen(screenName: String, category: String?, properties: [String: Any], options: [String: Any]) {
+        Analytics.shared().screen(screenName, category: category, properties: properties, options: options)
         return
     }
 

@@ -42,8 +42,8 @@ export interface SegmentAnalyticsPlugin {
 
 export interface InitializeArguments {
   writeKey: string;
-  trackLifecycleEvents: boolean;
-  recordScreenViews: boolean;
+  trackLifecycleEvents?: boolean;
+  recordScreenViews?: boolean;
 }
 
 export interface IdentifyArguments {
@@ -59,14 +59,14 @@ export interface TrackArguments {
 }
 
 export interface ScreenArguments {
-  screenName?: string;
+  screenName: string;
   category?: string;
   properties?: Record<string, unknown>;
   options?: Record<string, unknown>;
 }
 
 export interface PageArguments {
-  pageName?: string;
+  pageName: string;
   category?: string;
   properties?: Record<string, unknown>;
   options?: Record<string, unknown>;
