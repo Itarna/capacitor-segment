@@ -1,4 +1,4 @@
-package cl.payflowchile.capacitor.segment;
+package cl.payflowchile.capacitor.segmentanalytics;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;

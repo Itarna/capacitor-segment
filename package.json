@@ -1,6 +1,6 @@
 {
   "name": "capacitor-segment-plugin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Capacitor plugin that enables segment analytics tracking for ionic apps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

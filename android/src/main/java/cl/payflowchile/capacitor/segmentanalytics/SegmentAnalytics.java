@@ -1,4 +1,4 @@
-package cl.payflowchile.capacitor.segment;
+package cl.payflowchile.capacitor.segmentanalytics;
 
 import android.content.Context;
 import android.util.Log;
