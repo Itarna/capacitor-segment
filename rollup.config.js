@@ -4,7 +4,7 @@ export default {
     {
       file: 'dist/plugin.js',
       format: 'iife',
-      name: 'capacitorSegmentAnalytics',
+      name: 'capacitorSegment',
       globals: {
         '@capacitor/core': 'capacitorExports',
       },

@@ -19,8 +19,8 @@ public class SegmentAnalyticsPlugin: CAPPlugin {
             call.reject("Write key is required to initialize plugin")
             return
         }
-        let trackLifecycleEvents: Bool = call.getBool("trackLifecycleEvents", false)
-        let recordScreenViews: Bool = call.getBool("recordScreenViews", false)
+        let trackLifecycleEvents: Bool = call.getBool("trackLifecycleEvents") ?? false;
+        let recordScreenViews: Bool = call.getBool("recordScreenViews") ?? false;
         implementation.initialize(writeKey: writeKey, trackLifecycleEvents: trackLifecycleEvents, recordScreenViews: recordScreenViews)
         initialized = true
         call.resolve()
