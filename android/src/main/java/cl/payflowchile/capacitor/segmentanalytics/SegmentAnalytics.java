@@ -37,10 +37,12 @@ public class SegmentAnalytics {
         if (recordScreenViews) {
             builder.recordScreenViews();
         }
-        this.activity.runOnUiThread(() -> {
-            initialized = true;
-            analytics = builder.build();
-        });
+        this.activity.runOnUiThread(
+                () -> {
+                    initialized = true;
+                    analytics = builder.build();
+                }
+            );
     }
 
     public void identify(String userId, JSObject traits, JSObject options) {
