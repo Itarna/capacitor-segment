@@ -1,12 +1,14 @@
 import Foundation
 import Capacitor
 import Segment
+import Segment_Firebase
 
 @objc public class SegmentAnalytics: NSObject {
     @objc public func initialize(writeKey: String, trackLifecycleEvents: Bool, recordScreenViews: Bool) {
         let configuration = AnalyticsConfiguration.init(writeKey: writeKey)
         configuration.trackApplicationLifecycleEvents = trackLifecycleEvents
         configuration.recordScreenViews = recordScreenViews
+        configuration.use(SEGFirebaseIntegrationFactory.instance())
 
         Analytics.setup(with: configuration)
         print("SegmentAnalytics: initialized")
