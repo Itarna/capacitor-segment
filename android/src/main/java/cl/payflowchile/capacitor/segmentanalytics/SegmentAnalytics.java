@@ -9,6 +9,8 @@ import com.segment.analytics.Analytics.Builder;
 import com.segment.analytics.Options;
 import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
+import com.segment.analytics.android.integrations.firebase.FirebaseIntegration;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,6 +33,7 @@ public class SegmentAnalytics {
 
     public void initialize(String writeKey, Boolean trackLifecycleEvents, Boolean recordScreenViews) {
         Builder builder = new Analytics.Builder(this.context, writeKey);
+        builder.use(FirebaseIntegration.FACTORY);
         if (trackLifecycleEvents) {
             builder.trackApplicationLifecycleEvents();
         }
