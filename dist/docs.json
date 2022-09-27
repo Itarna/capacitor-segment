@@ -1,0 +1,396 @@
+{
+  "api": {
+    "name": "SegmentAnalyticsPlugin",
+    "slug": "segmentanalyticsplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "initialize",
+        "signature": "(args: InitializeArguments) => any",
+        "parameters": [
+          {
+            "name": "args",
+            "docs": "",
+            "type": "InitializeArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Configures and initializes the segment plugin",
+        "complexTypes": [
+          "InitializeArguments"
+        ],
+        "slug": "initialize"
+      },
+      {
+        "name": "identify",
+        "signature": "(args: IdentifyArguments) => any",
+        "parameters": [
+          {
+            "name": "args",
+            "docs": "",
+            "type": "IdentifyArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Identify a user.",
+        "complexTypes": [
+          "IdentifyArguments"
+        ],
+        "slug": "identify"
+      },
+      {
+        "name": "track",
+        "signature": "(args: TrackArguments) => any",
+        "parameters": [
+          {
+            "name": "args",
+            "docs": "",
+            "type": "TrackArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Track an event.",
+        "complexTypes": [
+          "TrackArguments"
+        ],
+        "slug": "track"
+      },
+      {
+        "name": "screen",
+        "signature": "(args: ScreenArguments) => any",
+        "parameters": [
+          {
+            "name": "args",
+            "docs": "",
+            "type": "ScreenArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Trigger screen view.",
+        "complexTypes": [
+          "ScreenArguments"
+        ],
+        "slug": "screen"
+      },
+      {
+        "name": "page",
+        "signature": "(args: PageArguments) => any",
+        "parameters": [
+          {
+            "name": "args",
+            "docs": "",
+            "type": "PageArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Trigger page view.",
+        "complexTypes": [
+          "PageArguments"
+        ],
+        "slug": "page"
+      },
+      {
+        "name": "group",
+        "signature": "(options: GroupArguments) => any",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "GroupArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Clear all information about the visitor & reset analytic state.",
+        "complexTypes": [
+          "GroupArguments"
+        ],
+        "slug": "group"
+      },
+      {
+        "name": "alias",
+        "signature": "(options: AliasArguments) => any",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AliasArguments"
+          }
+        ],
+        "returns": "any",
+        "tags": [],
+        "docs": "Clear all information about the visitor & reset analytic state.",
+        "complexTypes": [
+          "AliasArguments"
+        ],
+        "slug": "alias"
+      },
+      {
+        "name": "reset",
+        "signature": "() => any",
+        "parameters": [],
+        "returns": "any",
+        "tags": [],
+        "docs": "clears the SDK’s internal stores for the current user and group.",
+        "complexTypes": [],
+        "slug": "reset"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "InitializeArguments",
+      "slug": "initializearguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "writeKey",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "trackLifecycleEvents",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "recordScreenViews",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        }
+      ]
+    },
+    {
+      "name": "IdentifyArguments",
+      "slug": "identifyarguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "userId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "traits",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        },
+        {
+          "name": "options",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "name": "TrackArguments",
+      "slug": "trackarguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "eventName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "properties",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        },
+        {
+          "name": "options",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "name": "ScreenArguments",
+      "slug": "screenarguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "screenName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "properties",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        },
+        {
+          "name": "options",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "name": "PageArguments",
+      "slug": "pagearguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "pageName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "properties",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        },
+        {
+          "name": "options",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "name": "GroupArguments",
+      "slug": "grouparguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "userId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "groupId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "traits",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        },
+        {
+          "name": "options",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "name": "AliasArguments",
+      "slug": "aliasarguments",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "newId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "any"
+        }
+      ]
+    }
+  ],
+  "enums": []
+}
